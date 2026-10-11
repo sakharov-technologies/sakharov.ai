@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sakharov Technologies</title>
+<meta name="description" content="Sakharov Technologies is an independent R&amp;D company building calibrated instruments, test cells, and simulation tooling for plasma and electrochemical energy systems.">
+<meta property="og:title" content="Sakharov Technologies">
+<meta property="og:description" content="Measurement-first R&amp;D for plasma and electrochemical systems.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sakharov.ai/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23151B24'/%3E%3Crect x='9' y='7' width='2' height='18' fill='%233B6FE0'/%3E%3Crect x='12' y='7' width='1.5' height='18' fill='%232AA198'/%3E%3Crect x='22' y='7' width='2.5' height='18' fill='%23E25A6E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: one left-aligned reading column (72ch), hairline section rules, a spectral strip as the single graphic. */
+:root {
+  --bg: #F4F6F9;
+  --bg-2: #FFFFFF;
+  --fg: #151B24;
+  --muted: #56606E;
+  --line: #D6DCE5;
+  --accent: #A8233A;
+  --accent-ink: #FFFFFF;
+  --display: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, "Courier New", monospace;
+  --measure: 72ch;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1216; --bg-2: #161C23; --fg: #E7EBF0; --muted: #9AA5B3; --line: #2A333E;
+    --accent: #E25A6E; --accent-ink: #0E1216; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1216; --bg-2: #161C23; --fg: #E7EBF0; --muted: #9AA5B3; --line: #2A333E;
+  --accent: #E25A6E; --accent-ink: #0E1216; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  padding-inline: clamp(16px, 5vw, 48px);
+  padding-block: 0 4rem;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration-color: var(--line); text-underline-offset: 0.18em; }
+a:hover { text-decoration-color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.wrap { max-width: 64rem; margin-inline: auto; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2rem, 4.6vw, 3.25rem); letter-spacing: -0.015em; }
+h2 { font-size: clamp(1.35rem, 2.4vw, 1.75rem); letter-spacing: -0.01em; }
+h3 { font-size: 1.1rem; }
+p { margin: 0; max-width: var(--measure); }
+.eyebrow {
+  font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Header */
+.top {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  padding-block: 1.25rem; border-bottom: 1px solid var(--line);
+}
+.mark { font-family: var(--display); font-weight: 700; font-size: 1.05rem; letter-spacing: 0.01em; text-decoration: none; }
+.mark small { font-weight: 500; color: var(--muted); margin-left: 0.5rem; font-size: 0.8rem; }
+.top nav { display: flex; gap: 1.25rem; flex-wrap: wrap; font-family: var(--display); font-size: 0.92rem; }
+.top nav a { text-decoration: none; color: var(--muted); }
+.top nav a:hover { color: var(--fg); }
+
+/* Hero */
+.hero { padding-block: clamp(3rem, 8vw, 5.5rem) 3rem; display: grid; gap: 1.5rem; }
+.lede { font-size: 1.2rem; line-height: 1.55; color: var(--fg); }
+.actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.btn {
+  font-family: var(--display); font-weight: 600; font-size: 0.95rem; text-decoration: none;
+  padding: 0.7rem 1.1rem; border-radius: 4px; border: 1px solid var(--line); background: var(--bg-2); color: var(--fg);
+}
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+/* Spectral strip: lines placed to scale on a 400–700 nm axis */
+.spectrum { margin-top: 1.5rem; max-width: 40rem; }
+.spectrum .axis { position: relative; height: 44px; border-bottom: 1px solid var(--line); }
+.spectrum .tick { position: absolute; bottom: 0; width: 2px; height: 26px; transform: translateX(-50%); }
+.spectrum .tick span {
+  position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); white-space: nowrap;
+  font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
+}
+.spectrum .ends { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.72rem; color: var(--muted); margin-top: 0.35rem; }
+.spectrum figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem; max-width: var(--measure); }
+.t-hb { background: #3B6FE0; } .t-ba { background: #2AA198; } .t-ha { background: #E25A6E; }
+
+/* Sections */
+section { padding-block: 3rem; border-top: 1px solid var(--line); display: grid; gap: 1.5rem; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.25rem; }
+.card { min-width: 0; display: grid; gap: 0.6rem; align-content: start; padding: 1.25rem; background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; }
+.card p { font-size: 0.98rem; }
+.spec { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
+.spec b { color: var(--fg); font-weight: 500; }
+
+dl.principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.25rem 2rem; margin: 0; max-width: 64rem; }
+dl.principles div { min-width: 0; }
+dl.principles dt { font-family: var(--display); font-weight: 600; margin-bottom: 0.25rem; }
+dl.principles dd { margin: 0; font-size: 0.98rem; color: var(--fg); }
+
+.aside { border-left: 3px solid var(--accent); padding-left: 1rem; max-width: var(--measure); display: grid; gap: 0.5rem; }
+.aside p { font-size: 0.98rem; }
+
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 1.25rem; margin: 0; font-size: 0.95rem; max-width: 40rem; }
+.facts dt { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); align-self: baseline; }
+.facts dd { margin: 0; min-width: 0; }
+
+.contact-row { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.email { font-family: var(--mono); font-size: 1.05rem; user-select: all; }
+.copy { font-family: var(--display); font-size: 0.85rem; padding: 0.4rem 0.7rem; border-radius: 4px; border: 1px solid var(--line); background: var(--bg-2); color: var(--fg); cursor: pointer; }
+.copy:hover { border-color: var(--accent); }
+
+footer { border-top: 1px solid var(--line); padding-top: 1.25rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: 0.85rem; color: var(--muted); font-family: var(--display); }
+
+@media (max-width: 480px) {
+  .facts { grid-template-columns: 1fr; }
+  .facts dt { margin-top: 0.4rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn, .copy { transition: border-color 160ms ease, background-color 160ms ease; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <a class="mark" href="#top">Sakharov Technologies<small>LLC</small></a>
+  <nav aria-label="Sections">
+    <a href="#work">Work</a>
+    <a href="#approach">Approach</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<section class="hero" style="border-top:0">
+  <p class="eyebrow">Independent R&amp;D · Founded 2026</p>
+  <h1>Measurement-first R&amp;D for plasma and electrochemical systems.</h1>
+  <p class="lede">Sakharov Technologies builds calibrated test cells, benchtop plasma instruments, and the simulation tooling around them, so that efficiency claims in energy conversion can be measured, reproduced, and published in standard units.</p>
+  <div class="actions">
+    <a class="btn primary" href="#contact">Work with us</a>
+    <a class="btn" href="#approach">How we work</a>
+  </div>
+
+  <figure class="spectrum" aria-label="Reference emission lines used in our diagnostics, placed to scale on a 400 to 700 nanometre axis">
+    <div class="axis">
+      <div class="tick t-hb" style="left:28.71%"><span>Hβ 486.13 nm</span></div>
+      <div class="tick t-ba" style="left:31.14%"><span style="bottom:12px;transform:translateX(0.6rem)">Ba⁺ 493.41 nm</span></div>
+      <div class="tick t-ha" style="left:85.43%"><span>Hα 656.28 nm</span></div>
+    </div>
+    <div class="ends"><span>400 nm</span><span>700 nm</span></div>
+    <figcaption>Three lines we calibrate against: the hydrogen Balmer pair that reports on electrolysis and plasma chemistry, and the barium-ion transition used for trapped-ion diagnostics.</figcaption>
+  </figure>
+</section>
+
+<section id="work">
+  <p class="eyebrow">What we build</p>
+  <h2>Three programs, one standard of evidence.</h2>
+  <div class="grid3">
+    <article class="card">
+      <h3>Electrochemical efficiency measurement</h3>
+      <p>Calibrated benchmarking of pulsed-waveform and RF-assisted electrolysis cells against PEM and alkaline baselines, with an uncertainty budget on every reported number.</p>
+      <p class="spec">Reported as <b>kWh / kg H₂</b> against the <b>39.4 LHV</b> and <b>42.2 HHV</b> references · Faradaic efficiency · cell temperature · input power from a traceable power analyser</p>
+    </article>
+    <article class="card">
+      <h3>Benchtop plasma diagnostics</h3>
+      <p>Radio-frequency ion traps and low-density plasma cells for heating-rate, electric-field-noise, and charge-state measurements, designed from the start for university facility partnerships.</p>
+      <p class="spec">Operating range <b>0.1 – 3 MHz</b> drive · millitesla fields · single-shot charge collection · Cs⁺ and Ba⁺ species</p>
+    </article>
+    <article class="card">
+      <h3>Simulation and process tooling</h3>
+      <p>Open-source-first simulation workflows and first-principles process models that tie bench data to prediction, with versioned inputs and reproducible pipelines.</p>
+      <p>Our analysis layer is built on Claude. We use it as the agentic core for literature retrieval over an indexed technical library, for generating and cross-checking simulation inputs against analytic reference values, and for automating the data pipelines that turn bench measurements into reviewable results.</p>
+      <p class="spec">WarpX (particle-in-cell) · OpenFOAM (CFD) · Claude (Anthropic) agentic tooling · indexed technical library with retrieval-augmented analysis · every run checked against one analytic observable before any conclusion is quoted</p>
+    </article>
+  </div>
+  <p>We are an early-stage company. Our first programs are measurement campaigns and the instruments needed to run them, not products.</p>
+</section>
+
+<section id="approach">
+  <p class="eyebrow">How we work</p>
+  <h2>Derive first, then measure, then correlate.</h2>
+  <dl class="principles">
+    <div>
+      <dt>Measure to falsify</dt>
+      <dd>Every build starts with a written null result and the discriminating test that would produce it. A device that cannot fail a test cannot pass one.</dd>
+    </div>
+    <div>
+      <dt>Calibrated instruments, stated uncertainty</dt>
+      <dd>Power, temperature, and gas-rate measurements come from traceable instruments, and every figure is reported with its uncertainty and method.</dd>
+    </div>
+    <div>
+      <dt>Conventional benchmarks</dt>
+      <dd>Results are expressed in standard units against peer-reviewed baselines, so that a program officer or a reviewer can compare them without translation.</dd>
+    </div>
+    <div>
+      <dt>Open methods</dt>
+      <dd>Methods, raw data, and analysis code are shared with collaborators and reviewers. Independent witnesses are recruited before a result is announced.</dd>
+    </div>
+  </dl>
+  <div class="aside">
+    <p class="eyebrow">Why the name</p>
+    <p>In 1967 Andrei Sakharov proposed that gravitation might not be fundamental but emergent, arising from the behaviour of the vacuum at a deeper level. The paper is a model of how we want to work in engineering: start from first principles, derive what should be observable, and only then fit to data. Empirical correlation is the last step, not the first.</p>
+  </div>
+</section>
+
+<section id="about">
+  <p class="eyebrow">About</p>
+  <h2>A small, instrument-driven research company.</h2>
+  <p>Sakharov Technologies is an early-stage research and development company founded in 2026. We design and run measurement campaigns in energy conversion, build the instruments and test cells they require, and report methods and results in standard units so that others can check them.</p>
+  <p>We work with university and national-laboratory facilities for measurements that need equipment beyond a benchtop, and with reviewers and collaborators who want a claim tested rather than argued.</p>
+</section>
+
+<section id="contact">
+  <p class="eyebrow">Contact</p>
+  <h2>Talk to us about a measurement.</h2>
+  <p>Facility partners, reviewers, and collaborators are welcome. Write to the address below and include what you would like measured and against which baseline.</p>
+  <div class="contact-row">
+    <a class="email" href="mailto:contact@sakharov.ai">contact@sakharov.ai</a>
+    <button class="copy" type="button" id="copy-email" data-email="contact@sakharov.ai">Copy address</button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span>© 2026 Sakharov Technologies LLC</span>
+  <span>contact@sakharov.ai</span>
+</footer>
+
+</div>
+<script>
+(function () {
+  var b = document.getElementById('copy-email');
+  if (!b) return;
+  b.addEventListener('click', function () {
+    var v = b.getAttribute('data-email');
+    var done = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy address'; }, 1600); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(v).then(done, function () { fallback(); });
+    } else { fallback(); }
+    function fallback() {
+      var r = document.createRange(); var el = document.querySelector('.email');
+      r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      try { document.execCommand('copy'); done(); } catch (e) {}
+    }
+  });
+})();
+</script>
+</body>
+</html>
